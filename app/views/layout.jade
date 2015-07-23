@@ -5,5 +5,18 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(type="text/javascript", src="/javascripts/jquery-1.10.2.min.js")
     script(type="text/javascript", src="/socket.io/socket.io.js")
+    // injector:css
+    link(rel="stylesheet" href="bower_components/angular/angular-csp.css")
+    // endinjector  
   body
+    // bower:js
+    script(src='bower_components/angular/angular.js')
+    script(src='bower_components/angular-ui-router/release/angular-ui-router.js')
+    script(src='bower_components/angular-bootstrap/ui-bootstrap-tpls.js')
+    // endbower
+    script(src='app.js')
+    // injector:js
+    script(src="javascripts/chat_cliente.js")
+    script(src="javascripts/jquery-1.10.2.min.js")
+    // endinjector
     block content

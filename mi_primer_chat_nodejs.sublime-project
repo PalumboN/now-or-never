@@ -3,8 +3,8 @@
     [
         {
             "path": ".",
-            "folder_exclude_patterns": [".*", "app/bower_components", "node_modules", "lib", "aws", "dist", "plugins", "hooks"],
-            "file_exclude_patterns": [".*"]
+            "folder_exclude_patterns": [".*", "bower_components", "node_modules", "lib", "aws", "dist", "plugins", "hooks"],
+            "file_exclude_patterns": [ "*.sublime-workspace"]
         }
     ],
     "settings":
