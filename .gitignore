@@ -5,6 +5,7 @@ lib
 .sass-cache
 app/bower_components
 *.orig
+*.log
 
 # Sublime Text
 *.sublime-workspace
