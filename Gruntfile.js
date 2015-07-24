@@ -120,7 +120,8 @@ module.exports = function (grunt) {
         '<%= yeoman.app %>/**/*.coffee'
         ],
         tasks: [
-          "newer:coffee"
+          "newer:coffee",
+          "injector:scripts"
         ]
       },
 
