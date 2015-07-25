@@ -1,9 +1,11 @@
 'use strict'
 
 class ChatCtrl extends BaseCtrl
-  @register "socketFactory"
+  @register "socketFactory", "$cookieStore"
 
   initialize: ->
+    console.log @$cookieStore.get("user")
+
     @s.messages = []
     @s.nick = @$stateParams.nick
 

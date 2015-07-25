@@ -10,10 +10,9 @@ passport.use new FacebookStrategy
   ,
   (accessToken, refreshToken, profile, done) ->
     laPosta = 
-      at: accessToken
-      rt: refreshToken
-      p: profile
-    console.log laPosta
+      accessToken: accessToken
+      refreshToken: refreshToken
+      profile: profile
     done null, laPosta
 
 fakeSerialize = (user, done) -> done null, user
@@ -27,6 +26,6 @@ module.exports= (app) ->
   app.get '/auth/facebook', passport.authenticate('facebook', scope: ['user_status', 'user_about_me'])
 
   app.get '/auth/facebook/callback', passport.authenticate('facebook', failureRedirect: '/'), (req, res) ->
-    console.log req.isAuthenticated()
     console.log req.user
+    res.cookie "user", JSON.stringify req.user
     res.redirect('/')
