@@ -1,0 +1,7 @@
+h1 Chat ({{nick}})
+div#caja1
+  div(ng-repeat="msg in messages")
+    label {{msg.user}} : {{msg.text}} 
+  form(ng-submit="send(text)")
+    input#mensaje(type="text", ng-model="text", size="50")
+    input(type="submit", value="Enviar mensaje")

@@ -70,7 +70,7 @@ module.exports = function (grunt) {
         files: {
           "<%= yeoman.app %>/<%= yeoman.views %>/layout.jade": [
             "<%= yeoman.root %>/**/*.js", 
-            "!<%= yeoman.root %>/app.js", 
+            "!<%= yeoman.root %>/app.js", // hardcoded for first
             "!<%= yeoman.root %>/bower_components/**/*.js", 
             "!<%= yeoman.root %>/**/*.spec.js", 
             "!<%= yeoman.root %>/**/*.mock.js"
@@ -89,9 +89,9 @@ module.exports = function (grunt) {
           endtag: "// endinjector"
         },
         files: {
-          "<%= yeoman.root %>/app.scss": [
-            "<%= yeoman.root %>/**/!(_)*.{scss,sass}", 
-            "!<%= yeoman.root %>/app.{scss,sass}"
+          "<%= yeoman.app %>/styles/main.scss": [
+            "<%= yeoman.app %>/**/!(_)*.{scss,sass}", 
+            "!<%= yeoman.app %>/styles/main.{scss,sass}"
           ]
         }
       },
@@ -116,11 +116,11 @@ module.exports = function (grunt) {
     watch: {
       coffee: {
         files: [
-        '<%= yeoman.server %>/**/*.coffee',
         '<%= yeoman.app %>/**/*.coffee'
         ],
         tasks: [
-          "newer:coffee"
+          "coffee",
+          "injector:scripts"
         ]
       },
 
@@ -140,6 +140,7 @@ module.exports = function (grunt) {
 
       express: {
         files: [
+          '<%= yeoman.server %>/**/*.coffee',
           '<%= yeoman.main %>',
           'lib/**/*.{js,json}'
         ],
@@ -158,7 +159,17 @@ module.exports = function (grunt) {
         ignorePath: "../../public/",
         exclude: []
       }
+    },
+
+    copy: {
+      styles: {
+        expand: true,
+        cwd: '<%= yeoman.app %>/styles',
+        dest: 'public/styles/',
+        src: '{,*/}*.css'
+      }
     }
+
   });
 
   grunt.registerTask('serve', function (target) {
@@ -170,6 +181,7 @@ module.exports = function (grunt) {
       'coffee',
       'injector',
       'wiredep',
+      'copy',
       'express:dev',
       'open',
       'watch'
