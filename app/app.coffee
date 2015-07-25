@@ -3,6 +3,7 @@
 window.app = angular.module 'now-or-never-app', [
   'ui.router'
   'ui.bootstrap'
+  'btford.socket-io'
 ]
 
 .config ($stateProvider, $urlRouterProvider) ->

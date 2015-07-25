@@ -23,12 +23,8 @@ nuevoUsuario = (socket) ->
 
 enviarMsj = (socket) ->
   socket.on 'mensaje', (data) ->
-    if socket.nick
-      mensaje = data.mensaje
-      nick = socket.nick
-      socket.broadcast.emit 'mensaje',
-        mensaje: mensaje
-        nick: nick
+    console.log data
+    socket.broadcast.emit 'mensaje', data
 
 usuario_desconectado = (socket) ->
   socket.on 'disconnect', ->
@@ -40,6 +36,7 @@ usuario_desconectado = (socket) ->
 exports.iniciar = (http) ->
   io = require('socket.io').listen(http)
   io.sockets.on 'connection', (socket) ->
+    console.log "Conectado"
     usuarios socket
     nuevoUsuario socket
     enviarMsj socket
