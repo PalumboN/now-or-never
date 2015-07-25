@@ -8,8 +8,6 @@ window.app = angular.module 'now-or-never-app', [
 .config ($stateProvider, $urlRouterProvider) ->
   $urlRouterProvider.otherwise '/'
 
-  console.log "----------------------"
-
   partials = (view) -> "partials/" + view
 
   $stateProvider
@@ -26,7 +24,7 @@ window.app = angular.module 'now-or-never-app', [
 
   $stateProvider
   .state('chat',
-    url: '/chat/:name'
+    url: '/chat/:nick'
     templateUrl: partials 'chat'
     controller: 'ChatCtrl'
   )

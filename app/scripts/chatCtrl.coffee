@@ -3,5 +3,6 @@
 class ChatCtrl extends BaseCtrl
   @register()
 
-  initialize: => 
-    console.log @name
+  initialize: =>
+    @s.messages = ["Hola", "Puto", "Trolo"]
+    @s.nick = @$stateParams.nick
