@@ -1,3 +1,5 @@
-.row
-  .col-xs-22
-    .caja1.field(label="nickname", ng-model="nickname", required="")
+form
+  h3 Ingrese Nombre
+  input(type="text", ng-model="nickname", required="")
+  input(type="submit", ui-sref="main.login")
+  

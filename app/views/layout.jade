@@ -13,7 +13,6 @@ html
     script(src='bower_components/angular/angular.js')
     script(src='bower_components/angular-ui-router/release/angular-ui-router.js')
     script(src='bower_components/angular-bootstrap/ui-bootstrap-tpls.js')
-    script(src='bower_components/angular-route/angular-route.js')
     script(src='bower_components/lodash/lodash.js')
     // endbower
     script(src='app.js')
@@ -23,4 +22,7 @@ html
     script(src="scripts/_baseCtrl.js")
     script(src="scripts/loginCtrl.js")
     // endinjector
-    block content
+    
+    div(ng-app='now-or-never-app')
+        div(ui-view)
+ 

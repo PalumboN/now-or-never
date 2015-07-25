@@ -70,7 +70,7 @@ module.exports = function (grunt) {
         files: {
           "<%= yeoman.app %>/<%= yeoman.views %>/layout.jade": [
             "<%= yeoman.root %>/**/*.js", 
-            "!<%= yeoman.root %>/app.js", 
+            "!<%= yeoman.root %>/app.js", // hardcoded for first
             "!<%= yeoman.root %>/bower_components/**/*.js", 
             "!<%= yeoman.root %>/**/*.spec.js", 
             "!<%= yeoman.root %>/**/*.mock.js"
@@ -116,7 +116,6 @@ module.exports = function (grunt) {
     watch: {
       coffee: {
         files: [
-        '<%= yeoman.server %>/**/*.coffee',
         '<%= yeoman.app %>/**/*.coffee'
         ],
         tasks: [
@@ -141,6 +140,7 @@ module.exports = function (grunt) {
 
       express: {
         files: [
+          '<%= yeoman.server %>/**/*.coffee',
           '<%= yeoman.main %>',
           'lib/**/*.{js,json}'
         ],

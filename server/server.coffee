@@ -7,6 +7,7 @@ user = require('./routes/user')
 chat = require('./routes/chat_servidor')
 http = require('http')
 path = require('path')
+_ = require('lodash')
 app = express()
 
 # all environments
@@ -26,8 +27,8 @@ app.use express.static(path.join(__dirname, '../public'))
 if 'development' == app.get('env')
   app.use express.errorHandler()
 
-app.get '/', (req, res) -> res.render "main"
-app.get '/partials/*', (req, res) -> res.render req.url
+app.get '/', (req, res) -> res.render "layout"
+app.get '/partials/*', (req, res) -> res.render _.trimLeft req.url, '/'
 
 app.get '/users', user.list
 app.get '/chat', (req, res) -> res.render 'chat'
