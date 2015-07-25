@@ -89,9 +89,9 @@ module.exports = function (grunt) {
           endtag: "// endinjector"
         },
         files: {
-          "<%= yeoman.root %>/app.scss": [
-            "<%= yeoman.root %>/**/!(_)*.{scss,sass}", 
-            "!<%= yeoman.root %>/app.{scss,sass}"
+          "<%= yeoman.app %>/styles/main.scss": [
+            "<%= yeoman.app %>/**/!(_)*.{scss,sass}", 
+            "!<%= yeoman.app %>/styles/main.{scss,sass}"
           ]
         }
       },
@@ -120,7 +120,7 @@ module.exports = function (grunt) {
         '<%= yeoman.app %>/**/*.coffee'
         ],
         tasks: [
-          "newer:coffee",
+          "coffee",
           "injector:scripts"
         ]
       },
@@ -159,7 +159,17 @@ module.exports = function (grunt) {
         ignorePath: "../../public/",
         exclude: []
       }
+    },
+
+    copy: {
+      styles: {
+        expand: true,
+        cwd: '<%= yeoman.app %>/styles',
+        dest: 'public/styles/',
+        src: '{,*/}*.css'
+      }
     }
+
   });
 
   grunt.registerTask('serve', function (target) {
@@ -171,6 +181,7 @@ module.exports = function (grunt) {
       'coffee',
       'injector',
       'wiredep',
+      'copy',
       'express:dev',
       'open',
       'watch'
