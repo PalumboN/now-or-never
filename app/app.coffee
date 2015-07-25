@@ -10,15 +10,23 @@ window.app = angular.module 'now-or-never-app', [
 
   console.log "----------------------"
 
+  partials = (view) -> "partials/" + view
+
   $stateProvider
   .state('home',
     url: '/'
-    templateUrl: 'partials/home'
+    templateUrl: partials 'home'
   )
 
   $stateProvider
   .state('login',
     url: '/login'
-    templateUrl: 'partials/login'
-    controller: 'LoginCtrl'
+    templateUrl: partials 'login'
+  )
+
+  $stateProvider
+  .state('chat',
+    url: '/chat/:name'
+    templateUrl: partials 'chat'
+    controller: 'ChatCtrl'
   )

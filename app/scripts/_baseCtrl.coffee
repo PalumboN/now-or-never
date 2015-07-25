@@ -7,7 +7,7 @@ class @BaseCtrl
 
     @inject: (args...) ->
         @$inject = _(@$inject)
-            .union(args,['$scope'])
+            .union(args,['$scope', '$stateParams'])
             .uniq()
             .value()
 
