@@ -172,11 +172,16 @@ module.exports = function (grunt) {
 
   });
 
-  grunt.registerTask('serve', function (target) {
-    if (target === 'dist') {
-      return grunt.task.run(['build', 'express:prod', 'open', 'express-keepalive']);
-    }
+  grunt.registerTask('prod', function (target) {
+    grunt.task.run([
+      'coffee',
+      'injector',
+      'wiredep', 
+      'express:prod'
+    ]);
+  });
 
+  grunt.registerTask('serve', function (target) {
     grunt.task.run([
       'coffee',
       'injector',

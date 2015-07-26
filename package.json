@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node main.js"
+    "start": "bower install && grunt prod"
   },
   "dependencies": {
     "coffee-script": "^1.9.3",
