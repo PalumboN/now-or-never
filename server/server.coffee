@@ -2,13 +2,16 @@
 # Module dependencies.
 ###
 express = require('express')
+passport = require('./passport')
 routes = require('./routes')
 user = require('./routes/user')
 chat = require('./routes/chat_servidor')
 http = require('http')
 path = require('path')
 _ = require('lodash')
+
 app = express()
+
 
 # all environments
 app.set 'port', process.env.PORT or 3000
@@ -19,9 +22,11 @@ app.use express.logger('dev')
 app.use express.json()
 app.use express.urlencoded()
 app.use express.methodOverride()
-app.use app.router
 app.use express.static(path.join(__dirname, '../public'))
 
+passport app
+
+app.use app.router
 
 # development only
 if 'development' == app.get('env')

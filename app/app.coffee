@@ -4,6 +4,7 @@ window.app = angular.module 'now-or-never-app', [
   'ui.router'
   'ui.bootstrap'
   'btford.socket-io'
+  'ngCookies'
 ]
 
 .config ($stateProvider, $urlRouterProvider) ->
