@@ -5,7 +5,7 @@ class ChatCtrl extends BaseCtrl
 
   initialize: ->
     @s.messages = []
-    @s.nick = @$cookieStore.get("user").profile.displayName
+    @s.nick = @$cookieStore.get("user")?.profile.displayName || @$stateParams.nick
 
     @_connectSocket()
 
@@ -14,11 +14,15 @@ class ChatCtrl extends BaseCtrl
     message = 
       user: @s.nick
       text: text
-    @socket.emit 'mensaje', message 
+    @socket.emit 'message', message 
     @s.messages.push message
     @s.text = ""
 
   _connectSocket: ->
     @socket = @socketFactory ioSocket: io.connect('http://localhost:3000')
 
-    @socket.on 'mensaje', (message) => @s.messages.push message
+    @socket.on 'message', (message) => @s.messages.push message
+    @socket.on 'match_founded', (userNick) => 
+      @s.messages.push text: "Connected with " + userNick
+
+    @socket.emit 'nick', @s.nick
