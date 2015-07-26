@@ -4,10 +4,8 @@ class ChatCtrl extends BaseCtrl
   @register "socketFactory", "$cookieStore"
 
   initialize: ->
-    console.log @$cookieStore.get("user")
-
     @s.messages = []
-    @s.nick = @$stateParams.nick
+    @s.nick = @$cookieStore.get("user").profile.displayName
 
     @_connectSocket()
 

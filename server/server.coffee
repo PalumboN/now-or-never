@@ -13,7 +13,6 @@ _ = require('lodash')
 app = express()
 
 
-
 # all environments
 app.set 'port', process.env.PORT or 3000
 app.set 'views', path.join(__dirname, '../app/views')
