@@ -14,15 +14,20 @@ class ChatCtrl extends BaseCtrl
     message = 
       user: @s.nick
       text: text
-    @socket.emit 'message', message 
+    @socket.emit 'send_message', message 
     @s.messages.push message
     @s.text = ""
 
   _connectSocket: ->
-    @socket = @socketFactory ioSocket: io.connect('http://localhost:3000')
+    @socket = @socketFactory ioSocket: io.connect('http://localhost:3000', forceNew: true)
 
-    @socket.on 'message', (message) => @s.messages.push message
-    @socket.on 'match_founded', (userNick) => 
+    @socket.on 'new_message', (message) => 
+      @s.messages.push message
+    @socket.on 'find', (userNick) => 
       @s.messages.push text: "Connected with " + userNick
+    @socket.on 'lost_user', =>
+      @s.messages.push text: "Searching..."
+      @socket.emit 'searching', @s.nick
 
-    @socket.emit 'nick', @s.nick
+    @s.messages.push text: "Searching..."
+    @socket.emit 'searching', @s.nick
