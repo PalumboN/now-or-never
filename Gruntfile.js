@@ -168,6 +168,16 @@ module.exports = function (grunt) {
         dest: 'public/styles/',
         src: '{,*/}*.css'
       }
+    },
+
+    // Configure a mochaTest task 
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec'
+        },
+        src: ['tests/**/*.{coffee,js}']
+      }
     }
 
   });
@@ -201,5 +211,7 @@ module.exports = function (grunt) {
       'watch'
     ]);
   });
+
+  grunt.registerTask('test', 'mochaTest');
 
 }
