@@ -32,11 +32,11 @@ app.use app.router
 if 'development' == app.get('env')
   app.use express.errorHandler()
 
-app.get '/', (req, res) -> res.render "layout"
+#app.get '/', (req, res) -> res.render "layout"
 app.get '/partials/*', (req, res) -> res.render _.trimLeft req.url, '/'
 
 app.get '/users', user.list
-app.get '/chat', (req, res) -> res.render 'chat'
+#app.get '/chat', (req, res) -> res.render 'chat'
 
 server = http.createServer(app).listen(app.get('port'), ->
   console.log 'Express server listening on port ' + app.get('port')

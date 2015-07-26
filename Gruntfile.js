@@ -181,6 +181,15 @@ module.exports = function (grunt) {
     ]);
   });
 
+  grunt.registerTask('build', function (target) {
+    grunt.task.run([
+      'coffee',
+      'injector',
+      'wiredep',
+      'copy',
+    ]);
+  });
+
   grunt.registerTask('serve', function (target) {
     grunt.task.run([
       'coffee',
