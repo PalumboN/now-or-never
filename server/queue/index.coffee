@@ -11,8 +11,8 @@ module.exports =
       conectados = => 
         console.log "Conectados (" + @queue.length + "): " + (_.map @queue, 'nick')
       
-      console.log "Connected"
       @queue.push socket
+      conectados()
 
       socket.on 'searching', (nick) =>
         socket.nick = nick
