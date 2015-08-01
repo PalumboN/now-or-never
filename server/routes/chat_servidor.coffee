@@ -35,6 +35,7 @@ usuario_desconectado = (socket) ->
 
 exports.iniciar = (http) ->
   io = require('socket.io').listen(http)
+  
   io.sockets.on 'connection', (socket) ->
     console.log "Conectado"
     usuarios socket

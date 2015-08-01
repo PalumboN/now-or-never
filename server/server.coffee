@@ -5,7 +5,7 @@ express = require('express')
 passport = require('./passport')
 routes = require('./routes')
 user = require('./routes/user')
-chat = require('./routes/chat_servidor')
+socketServer = require('./sockets')
 http = require('http')
 path = require('path')
 _ = require('lodash')
@@ -43,4 +43,4 @@ server = http.createServer(app).listen(app.get('port'), ->
   return
 )
 
-chat.iniciar server
+socketServer.listen server
