@@ -32,6 +32,14 @@ app.use app.router
 if 'development' == app.get('env')
   app.use express.errorHandler()
 
+# CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
+app.all '*', (req, res, next) ->
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Headers", "X-Requested-With")
+  next()
+
+
+
 #app.get '/', (req, res) -> res.render "layout"
 app.get '/partials/*', (req, res) -> res.render _.trimLeft req.url, '/'
 
