@@ -5,7 +5,7 @@ html
   body
     script(type="text/javascript").
         console.log(!{JSON.stringify(user)});
-        window.opener.postMessage(!{JSON.stringify(user)}, '*');
+        parent.postMessage(!{JSON.stringify(user)}, '*');
         window.close();
 
     p Welcom #{user.profile.displayName}
