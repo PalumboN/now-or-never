@@ -14,4 +14,4 @@ module.exports= (app) ->
   app.get '/auth/facebook/callback', passport.authenticate('facebook', failureRedirect: '/'), (req, res) ->
     console.log req.user
     res.cookie "user", JSON.stringify req.user
-    res.redirect('http://localhost:8100/')
+    res.json(req.user)
