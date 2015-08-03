@@ -1,0 +1,11 @@
+doctype
+html
+  head
+    title Login  
+  body
+    script(type="text/javascript").
+        console.log(!{JSON.stringify(user)});
+        window.opener.postMessage(!{JSON.stringify(user)}, '*');
+        window.close();
+
+    p Welcom #{user.profile.displayName}

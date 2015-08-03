@@ -13,5 +13,6 @@ module.exports= (app) ->
 
   app.get '/auth/facebook/callback', passport.authenticate('facebook', failureRedirect: '/'), (req, res) ->
     console.log req.user
-    res.cookie "user", JSON.stringify req.user
-    res.json(req.user)
+    req.user.profile.picture = "https://graph.facebook.com/v2.2/me/picture?access_token=" + req.user.accessToken
+    res.locals.user = req.user
+    res.render "login", req.user
